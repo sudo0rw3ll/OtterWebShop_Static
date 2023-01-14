@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
             password: document.getElementById('login_password').value
         };
 
-        fetch("http://127.0.0.1:9000/login", {
+        fetch("https://otter-web-shop-auth.onrender.com/login", {
             method: "POST",
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(data)

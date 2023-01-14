@@ -2,7 +2,7 @@ window.addEventListener("load", ()=>{
     const cookies = document.cookie.split("=");
     const token = cookies[cookies.length - 1];
 
-    fetch("http://localhost:1337/admin/location", {method:"GET", headers: {'Authorization' : `Bearer ${token}`}})
+    fetch("https://otter-web-shop-rest.onrender.com/admin/location", {method:"GET", headers: {'Authorization' : `Bearer ${token}`}})
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -39,7 +39,7 @@ function createCart(){
 
         location_json = JSON.stringify(location);
 
-        fetch("http://localhost:1337/admin/location/addLocation", {
+        fetch("https://otter-web-shop-rest.onrender.com/admin/location/addLocation", {
             method:"POST",
             headers:{
                 'Accept' : 'application/json',
@@ -55,7 +55,7 @@ function createCart(){
                 }else if(data.error){
                     alert(data.error);
                 }else{
-                    fetch("http://localhost:1337/admin/location/", {method:"GET", headers:{'Authorization' : `Bearer ${token}`}})
+                    fetch("https://otter-web-shop-rest.onrender.com/admin/location/", {method:"GET", headers:{'Authorization' : `Bearer ${token}`}})
                     .then(response => response.json())
                     .then(data => updateTable(data));
                 }
@@ -93,7 +93,7 @@ function updateTable(data){
         let id = obrisi_buttons[i].parentNode.parentNode.dataset.locationid;
         obrisi_buttons[i].addEventListener("click", function(e){
             e.preventDefault();
-            fetch("http://localhost:1337/admin/location/deleteLocation/" + id, {method:"DELETE", headers: {'Authorization' : `Bearer ${token}`}})
+            fetch("https://otter-web-shop-rest.onrender.com/admin/location/deleteLocation/" + id, {method:"DELETE", headers: {'Authorization' : `Bearer ${token}`}})
             .then(response => response.json())
             .then(data => {
                 if(data.error){
@@ -101,7 +101,7 @@ function updateTable(data){
                 }else if(data.msg){
                     alert(data.msg);
                 }else{
-                    fetch("http://localhost:1337/admin/location", {method:"GET", headers : {'Authorization' : `Bearer ${token}`}})
+                    fetch("https://otter-web-shop-rest.onrender.com/admin/location", {method:"GET", headers : {'Authorization' : `Bearer ${token}`}})
                     .then(response => response.json())
                     .then(data => updateTable(data));
                 }
@@ -131,7 +131,7 @@ function updateTable(data){
 
                 http_body = JSON.stringify(edit);
 
-                fetch("http://localhost:1337/admin/location/editLocation/"+location_id, {
+                fetch("https://otter-web-shop-rest.onrender.com/admin/location/editLocation/"+location_id, {
                     method: "PUT",
                     headers: {
                         'Accept': 'application/json',
@@ -147,7 +147,7 @@ function updateTable(data){
                     }else if(data.error){
                         alert(data.error);
                     }else{
-                        fetch("http://localhost:1337/admin/location", {method:"GET", headers:{'Authorization' : `Bearer ${token}`}})
+                        fetch("https://otter-web-shop-rest.onrender.com/admin/location", {method:"GET", headers:{'Authorization' : `Bearer ${token}`}})
                         .then(response => response.json())
                         .then(tableData => updateTable(tableData));
                     }

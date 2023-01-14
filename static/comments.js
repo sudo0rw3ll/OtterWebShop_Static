@@ -2,7 +2,7 @@ window.addEventListener("load", ()=>{
     const cookies = document.cookie.split("=");
     const token = cookies[cookies.length - 1];
 
-    fetch("http://localhost:1337/admin/comment", {method:"GET", headers: {"Authorization" : `Bearer ${token}`}})
+    fetch("https://otter-web-shop-rest.onrender.com/admin/comment", {method:"GET", headers: {"Authorization" : `Bearer ${token}`}})
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -40,7 +40,7 @@ function createCart(){
 
         comment_json = JSON.stringify(comment);
 
-        fetch("http://localhost:1337/admin/comment/addComment", {
+        fetch("https://otter-web-shop-rest.onrender.com/admin/comment/addComment", {
             method:"POST",
             headers:{
                 'Accept' : 'application/json',
@@ -56,7 +56,7 @@ function createCart(){
                 }else if(data.msg){
                     alert(data.msg);
                 }else{
-                    fetch("http://localhost:1337/admin/comment/", {method:"GET", headers:{'Authorization' : `Bearer ${token}`}})
+                    fetch("https://otter-web-shop-rest.onrender.com/admin/comment/", {method:"GET", headers:{'Authorization' : `Bearer ${token}`}})
                     .then(response => response.json())
                     .then(data => updateTable(data));
                 }
@@ -95,7 +95,7 @@ function updateTable(data){
         let id = obrisi_buttons[i].parentNode.parentNode.dataset.commentid;
         obrisi_buttons[i].addEventListener("click", function(e){
             e.preventDefault();
-            fetch("http://localhost:1337/admin/comment/deleteComment/" + id, {method:"DELETE", headers:{'Authorization' : `Bearer ${token}`}})
+            fetch("https://otter-web-shop-rest.onrender.com/admin/comment/deleteComment/" + id, {method:"DELETE", headers:{'Authorization' : `Bearer ${token}`}})
             .then(response => response.json())
             .then(data => {
                 if(data.error){
@@ -103,7 +103,7 @@ function updateTable(data){
                 }else if(data.msg){
                     alert(data.msg);
                 }else{
-                    fetch("http://localhost:1337/admin/comment", {method:"GET", headers:{'Authorization' : `Bearer ${token}`}})
+                    fetch("https://otter-web-shop-rest.onrender.com/admin/comment", {method:"GET", headers:{'Authorization' : `Bearer ${token}`}})
                     .then(response => response.json())
                     .then(data => updateTable(data));
                 }
@@ -134,7 +134,7 @@ function updateTable(data){
 
                 http_body = JSON.stringify(edit);
 
-                fetch("http://localhost:1337/admin/comment/editComment/"+comment_id, {
+                fetch("https://otter-web-shop-rest.onrender.com/admin/comment/editComment/"+comment_id, {
                     method: "PUT",
                     headers: {
                         'Accept': 'application/json',
@@ -150,7 +150,7 @@ function updateTable(data){
                     }else if(data.msg){
                         alert(data.msg);
                     }else{
-                        fetch("http://localhost:1337/admin/comment", {method:"GET", headers:{'Authorization' : `Bearer ${token}`}})
+                        fetch("https://otter-web-shop-rest.onrender.com/admin/comment", {method:"GET", headers:{'Authorization' : `Bearer ${token}`}})
                         .then(response => response.json())
                         .then(tableData => updateTable(tableData));
                     }
