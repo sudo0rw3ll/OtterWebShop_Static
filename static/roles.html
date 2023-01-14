@@ -1,0 +1,215 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <title>
+            Admin Dashboard
+        </title>
+
+        <script type="text/javascript" src="/roles.js"></script>
+    </head>
+    
+    <body>
+        <!-- Menu bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/admin">Admin Dashboard</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/admin">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Actions
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a id="actionCreate" class="dropdown-item" href="#">Create</a></li>
+                                <li><a class="dropdown-item" href="#">Show all</a></li>
+                                <li><a id="actionEdit" class="dropdown-item" href="#">Update</a></li>
+                                <li><a class="dropdown-item" href="#">Delete</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input id="search_q" class="form-control me-2" type="search" placeholder="Search entity" aria-label="Search">
+                        <button id="btn_search" class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>        
+        
+        <!-- Sidebar -->
+        <div class="container-fluid">
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            <span class="fs-5 d-none d-sm-inline">Menu</span>
+                        </a>
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                            <li class="nav-item">
+                                <a href="/admin" class="nav-link align-middle px-0">
+                                    <i class="fs-4 bi-house"></i><span class="ms-1 d-none d-sm-inline">Pocetna</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-database"></i> <span class="ms-1 d-none d-sm-inline">Entiteti</span>
+                                </a>
+                                <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="/admin/cartitems" class="nav-link px-0"><span class="d-none d-sm-inline">CartItem</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/carts" class="nav-link px-0"><span class="d-none d-sm-inline">Cart</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/orderItems" class="nav-link px-0"><span class="d-none d-sm-inline">OrderItem</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/orders" class="nav-link px-0"><span class="d-none d-sm-inline">Order</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/transactions" class="nav-link px-0"><span class="d-none d-sm-inline">Transaction</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/products" class="nav-link px-0"><span class="d-none d-sm-inline">Product</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/productcategories" class="nav-link px-0"><span class="d-none d-sm-inline">ProductCategory</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/users" class="nav-link px-0"><span class="d-none d-sm-inline">User</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/comments" class="nav-link px-0"><span class="d-none d-sm-inline">Comment</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/roles" class="nav-link px-0"><span class="d-none d-sm-inline">Role</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/locations" class="nav-link px-0"><span class="d-none d-sm-inline">Location</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/countries" class="nav-link px-0"><span class="d-none d-sm-inline">Country</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/regions" class="nav-link px-0"><span class="d-none d-sm-inline">Region</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/cities" class="nav-link px-0"><span class="d-none d-sm-inline">City</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container">
+                    <h1>Entitet Roles</h1>
+                    <table class="table table-hover table-dark w-auto">
+                        <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">role_name</th>
+                            <th scope="col">Akcije</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider" id="rolesTable">
+                        <tr>
+                            <td>1</td>
+                            <td>Joka</td>
+                            <td>Joksim</td>
+                            <td>@joksim</td>
+                            <td>
+                                <button class="btn btn-danger  btn-sm btn_obrisi">Obriši</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Vid</td>
+                            <td>Nikolic</td>
+                            <td>@vid</td>
+                            <td>
+                                <button class="btn btn-danger  btn-sm btn_obrisi">Obriši</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Bird</td>
+                            <td>Is the word</td>
+                            <td>@bababababa</td>
+                            <td>
+                                <button class="btn btn-danger  btn-sm btn_obrisi">Obriši</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <button class="btn btn-success" id="btn_dodaj_novu_role">Dodaj</button>
+                    </div>
+                    <div class="modal fade" id="rolesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Dodaj Role</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <form id="updateTask">
+                                <div class="row">
+                                  <div class="col-sm-6">
+                                    <div class="mb-3">
+                                        <label for="input_role_name" class="form-label">Role Name:</label>
+                                        <input type="text" class="form-control" id="input_role_name">
+                                      </div>                                      
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                              <button type="button" class="btn btn-primary" id="addRoleBtn">Dodaj</button>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="modal fade" id="editRoleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Uredi Role</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <form id="updateTask">
+                                    <div class="row">
+                                      <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <label for="edit_input_role_name" class="form-label">Role name:</label>
+                                            <input type="text" class="form-control" id="edit_input_role_name">
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                                  <button type="button" class="btn btn-primary" id="editRoleBtn">Izmeni</button>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
